@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Store3._1Version.Models.ProductLog>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="leftBar">
+            <a class="btn btn-primary" asp-controller="Product" asp-action="Create">Add Product</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="rightBar">
+            <a class="btn btn-primary" asp-controller="Product" asp-action="Index">Manage Product</a>
+        </div>
+    </div>
+</div>
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Date.ToString("dd MMM yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{<span>Empty</span>}
+
+
