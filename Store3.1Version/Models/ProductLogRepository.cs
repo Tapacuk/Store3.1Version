@@ -18,6 +18,7 @@ namespace Store3._1Version.Models
         public void AddProductLog(ProductLog p)
         {
             storeContext.ProductLogs.Add(p);
+            storeContext.SaveChanges();
         }
 
         public ProductLog FetchProductLog(int id)
